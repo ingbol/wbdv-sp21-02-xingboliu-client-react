@@ -104,4 +104,5 @@ const CourseEditor = ({history}) =>
             </div>
         </div>
     </div>
+
 export default CourseEditor
