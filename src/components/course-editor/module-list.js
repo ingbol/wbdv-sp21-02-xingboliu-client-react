@@ -33,8 +33,9 @@ const ModuleList = (
                         </li>
                     )
                 }
+
                 <li className="list-group-item text-center">
-                    <Link to={`/courses/${layout}/edit/${courseId}`}> 
+                    <Link to={`/courses/${layout}/edit/${courseId}`}>
                         <i onClick={() => createModule(courseId)} className="fas fa-plus fa-2x"></i>
                     </Link>
                 </li>
