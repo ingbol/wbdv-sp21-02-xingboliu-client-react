@@ -41,7 +41,7 @@ const CourseCard = (
                 <h5 className="card-title">
                     {
                         !editing &&
-                        <Link to="/editor">
+                        <Link to={`/courses/grid/edit/${course._id}`}>
                             {course.title}
                         </Link>
                     }
@@ -55,7 +55,7 @@ const CourseCard = (
                 </h5>
                 <p className="card-text">Some quick example text to build on the card title and make up the bulk of
                     the card's content.</p>
-                <Link to="/editor" className="btn btn-primary">
+                <Link to="{`/courses/grid/edit/${course._id}`}" className="btn btn-primary">
                     Go somewhere
                 </Link>
             </div>

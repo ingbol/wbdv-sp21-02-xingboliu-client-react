@@ -3,6 +3,8 @@ import {Link, Route} from "react-router-dom";
 import courseService from "../services/course-sevice"
 import CourseTable from "./course-table";
 import CourseGrid from "./course-grid";
+import CourseEditor from "./course-editor/course-editor";
+
 
 export default class CourseManager
     extends React.Component {
@@ -65,28 +67,28 @@ export default class CourseManager
         return(
             <div className="wbdv-container">
 
-                <div className="row wbdv-sticky-top wbdv-padding-5px">
-                    <div className="col-1">
-                        <i className="fa fa-bars fa-2x"></i>
-                    </div>
-                    <div className="col-3 d-none d-lg-block">
-                        <h4>Course Manager</h4>
-                    </div>
-                    <div className="col-7">
-                        <input className="form-control"
-                               placeholder="New Course Title"
-                               onChange={(e) => this.title = e.target.value}
-                               />
-                    </div>
-                    <div className="col-1">
-                        <i className="fa fa-plus-circle fa-2x" onClick={this.addCourse}></i>
-                    </div>
-                </div>
-                <br/>
-                <br/>
-
-
                 <Route path="/courses/table" exact={true} >
+                    <div className="row wbdv-sticky-top wbdv-padding-5px">
+                        <div className="col-1">
+                            <i className="fa fa-bars fa-2x"></i>
+                        </div>
+                        <div className="col-3 d-none d-lg-block">
+                            <h4>Course Manager</h4>
+                        </div>
+                        <div className="col-7">
+                            <input className="form-control"
+                                   placeholder="New Course Title"
+                                   onChange={(e) => this.title = e.target.value}
+                            />
+                        </div>
+                        <div className="col-1">
+                            <i className="fa fa-plus-circle fa-2x" onClick={this.addCourse}></i>
+                        </div>
+                    </div>
+                    <i className="fa fa-plus-circle fa-4x" onClick={this.addCourse}></i>
+                    <br/>
+                    <br/>
+
                     <CourseTable
                         updateCourse={this.updateCourse}
                         deleteCourse={this.deleteCourse}
@@ -95,11 +97,40 @@ export default class CourseManager
                 </Route>
 
                 <Route path="/courses/grid" exact={true} >
+                    <div className="row wbdv-sticky-top wbdv-padding-5px">
+                        <div className="col-1">
+                            <i className="fa fa-bars fa-2x"></i>
+                        </div>
+                        <div className="col-3 d-none d-lg-block">
+                            <h4>Course Manager</h4>
+                        </div>
+                        <div className="col-7">
+                            <input className="form-control"
+                                   placeholder="New Course Title"
+                                   onChange={(e) => this.title = e.target.value}
+                            />
+                        </div>
+                        <div className="col-1">
+                            <i className="fa fa-plus-circle fa-2x" onClick={this.addCourse}></i>
+                        </div>
+                    </div>
+                    <i className="fa fa-plus-circle fa-4x" onClick={this.addCourse}></i>
+                    <br/>
+                    <br/>
+
                     <CourseGrid courses={this.state.courses}
                                 updateCourse={this.updateCourse}
                                 deleteCourse={this.deleteCourse}/>
                 </Route>
-                <i className="fa fa-plus-circle fa-4x" onClick={this.addCourse}></i>
+
+                <Route path={[
+                    "/courses/:layout/edit/:courseId",
+                    "/courses/:layout/edit/:courseId/modules/:moduleId",
+                    "/courses/:layout/edit/:courseId/modules/:moduleId/lessons/:lessonId",
+                    "/courses/:layout/edit/:courseId/modules/:moduleId/lessons/:lessonId/topics/:topicId"]}
+                       exact={true}
+                       render={(props) => <CourseEditor {...props}/>}>
+                </Route>
             </div>
         )
     }

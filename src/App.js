@@ -2,7 +2,7 @@ import './App.css';
 import {BrowserRouter, Route} from "react-router-dom";
 import Home from "./components/home"
 import CourseManager from "./components/course-manager";
-import CourseEditor from "./components/course-editor";
+import CourseEditor from "./components/course-editor/course-editor";
 
 function App() {
   return (

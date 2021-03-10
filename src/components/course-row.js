@@ -24,7 +24,7 @@ const CourseRow = (
             <div className="col-5">
                 {
                     !editing &&
-                        <Link to="/editor">
+                        <Link to={`/courses/table/edit/${course._id}`}>
                             <i className="fa fa-file"></i>
                             {course.title}
                         </Link>
