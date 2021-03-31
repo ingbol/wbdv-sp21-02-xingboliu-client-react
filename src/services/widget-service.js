@@ -1,5 +1,5 @@
-const BASE_URL = "https://wbdv-xingboliu-server-java.herokuapp.com";
-// const BASE_URL = "http://localhost:8080";
+// const BASE_URL = "https://wbdv-xingboliu-server-java.herokuapp.com";
+const BASE_URL = "http://localhost:8080";
 
 export const createWidget = (tid, widget) =>
     fetch(`${BASE_URL}/api/topics/${tid}/widgets`, {

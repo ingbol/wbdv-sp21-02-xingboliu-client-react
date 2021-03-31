@@ -38,17 +38,96 @@ const ParagraphWidget = (
                             }} value={cachedWidget.type} className="form-control">
                                 <option value={"HEADING"}>Heading</option>
                                 <option value={"PARAGRAPH"}>Paragraph</option>
+                                <option value={"LIST"}>List</option>
                                 <option value={"VIDEO"}>Video</option>
                                 <option value={"IMAGE"}>Image</option>
                                 <option value={"LINK"}>Link</option>
                                 <option value={"HTML"}>HTML</option>
                             </select>
-                            <textarea onChange={(e) => {
-                                setCachedWidget({
-                                    ...cachedWidget,
-                                    text: e.target.value
-                                    })
-                            }} value={cachedWidget.text} className="form-control"></textarea>
+
+                            {
+                                cachedWidget.type === "HEADING" &&
+                                <>
+                                    <input onChange={(e) => {
+                                        setCachedWidget({
+                                            ...cachedWidget,
+                                            text: e.target.value
+                                        })
+                                    }} value={cachedWidget.text} className="form-control"></input>
+                                    <select onChange={(e) => {
+                                        setCachedWidget({
+                                            ...cachedWidget,
+                                            size: e.target.value
+                                        })
+                                    }} value={cachedWidget.size} className="form-control">
+                                        <option value={1}>Heading 1</option>
+                                        <option value={2}>Heading 2</option>
+                                        <option value={3}>Heading 3</option>
+                                        <option value={4}>Heading 4</option>
+                                        <option value={5}>Heading 5</option>
+                                        <option value={6}>Heading 6</option>
+                                    </select>
+                                </>
+                            }
+                            {
+                                cachedWidget.type === "PARAGRAPH" &&
+                                <>
+                                    <textarea onChange={(e) => {
+                                        setCachedWidget({
+                                            ...cachedWidget,
+                                            text: e.target.value
+                                        })
+                                    }} value={cachedWidget.text} className="form-control"></textarea>
+                                </>
+                            }
+                            {
+                                cachedWidget.type === "LIST" &&
+                                <>
+                                    <input type="checkbox" id="ordered" onChange={(e) => {
+                                        setCachedWidget({
+                                            ...cachedWidget,
+                                            ordered: e.target.checked
+                                        })
+                                    }} checked={cachedWidget.ordered}/>
+                                    <label for="ordered">Ordered</label>
+
+                                    <textarea onChange={(e) => {
+                                        setCachedWidget({
+                                            ...cachedWidget,
+                                            text: e.target.value
+                                        })
+                                    }} value={cachedWidget.text} className="form-control"></textarea>
+                                </>
+                            }
+                            {
+                                cachedWidget.type === "IMAGE" &&
+                                <>
+                                    Image URL
+                                    <input onChange={(e) => {
+                                        setCachedWidget({
+                                            ...cachedWidget,
+                                            src: e.target.value
+                                        })
+                                    }} value={cachedWidget.src} className="form-control"></input>
+
+                                    Image width
+                                    <input onChange={(e) => {
+                                        setCachedWidget({
+                                            ...cachedWidget,
+                                            width: e.target.value
+                                        })
+                                    }} value={cachedWidget.width} className="form-control"></input>
+
+                                    Image height
+                                    <input onChange={(e) => {
+                                        setCachedWidget({
+                                            ...cachedWidget,
+                                            height: e.target.value
+                                        })
+                                    }} value={cachedWidget.height} className="form-control"></input>
+                                </>
+                            }
+
                         </div>
                         <div className="col-3">
                             <i onClick={() => {
