@@ -21,7 +21,7 @@ const CourseRow = (
 
     return (
         <div className="row">
-            <div className="col-5">
+            <div className="col-3">
                 {
                     !editing &&
                         <Link to={`/courses/table/edit/${course._id}`}>
@@ -42,6 +42,11 @@ const CourseRow = (
             </div>
             <div className="col-3 d-none d-sm-block">
                 {course.lastModified}
+            </div>
+            <div className="col-2 d-none d-sm-block">
+                <Link to={`/courses/${course._id}/quizzes`}>
+                    Quizzes
+                </Link>
             </div>
             <div className="col-1 text-nowrap">
                 <i onClick={() => deleteCourse(course)} className="fa fa-trash"></i>

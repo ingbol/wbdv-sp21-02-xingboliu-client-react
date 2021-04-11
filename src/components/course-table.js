@@ -13,7 +13,7 @@ export default class CourseTable extends
             return(
                 <div className="wbdv-container">
                     <div className="row border-bottom">
-                        <div className="col-5">
+                        <div className="col-3">
                             Title
                         </div>
                         <div className="col-3 d-none d-sm-block">
@@ -22,6 +22,9 @@ export default class CourseTable extends
                         </div>
                         <div className="col-3 d-none d-sm-block">
                             Last modified
+                        </div>
+                        <div className="col-2 d-none d-sm-block">
+                            Quizzes
                         </div>
                         <div className="col-1 text-nowrap">
                             <i className="fa fa-folder"></i>
